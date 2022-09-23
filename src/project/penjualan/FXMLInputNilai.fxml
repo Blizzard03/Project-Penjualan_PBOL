@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="308.0" prefWidth="348.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.penjualan.FXMLInputNilaiController">
+   <children>
+      <Label layoutX="21.0" layoutY="23.0" text="Input Data Pelanggan">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="21.0" layoutY="63.0" text="Id Member ">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="21.0" layoutY="99.0" text="Nama Lengkap ">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="21.0" layoutY="134.0" text="Alamat ">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="21.0" layoutY="175.0" text="Total Pembelian " textAlignment="RIGHT">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <TextField fx:id="TextId" layoutX="158.0" layoutY="63.0" />
+      <TextField fx:id="TextNama" layoutX="158.0" layoutY="99.0" />
+      <TextField fx:id="TextAlamat" layoutX="158.0" layoutY="134.0" />
+      <TextField fx:id="TextTotal" layoutX="158.0" layoutY="175.0" />
+      <Label layoutX="147.0" layoutY="63.0" text=":">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="147.0" layoutY="99.0" text=":">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="147.0" layoutY="134.0" text=":">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="147.0" layoutY="175.0" text=":">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Button fx:id="Save" layoutX="63.0" layoutY="222.0" mnemonicParsing="false" onAction="#simpanklik" text="Simpan">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <Button fx:id="Cancel" layoutX="151.0" layoutY="222.0" mnemonicParsing="false" onAction="#cancelklik" prefHeight="30.0" prefWidth="67.0" text="Batal">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <Button fx:id="Exit" layoutX="239.0" layoutY="222.0" mnemonicParsing="false" onAction="#keluarklik" prefHeight="30.0" prefWidth="67.0" text="Keluar">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

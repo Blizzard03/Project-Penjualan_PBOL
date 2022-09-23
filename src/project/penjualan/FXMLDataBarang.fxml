@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="463.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.penjualan.FXMLDataBarangController">
+   <children>
+      <Label layoutX="14.0" layoutY="14.0" text="Data Barang">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <TableView fx:id="tbvbrg" layoutX="14.0" layoutY="47.0" prefHeight="306.0" prefWidth="567.0">
+        <columns>
+          <TableColumn prefWidth="75.0" text="C1" />
+          <TableColumn prefWidth="75.0" text="C2" />
+        </columns>
+      </TableView>
+      <Button fx:id="add" layoutX="14.0" layoutY="416.0" mnemonicParsing="false" onAction="#tambahklik" prefHeight="37.0" prefWidth="106.0">
+         <graphic>
+            <ImageView fitHeight="22.0" fitWidth="85.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../add.jpg" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="edit" layoutX="169.0" layoutY="416.0" mnemonicParsing="false" onAction="#ubahklik" prefHeight="37.0" prefWidth="106.0">
+         <graphic>
+            <ImageView fitHeight="29.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../edit.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="delete" layoutX="329.0" layoutY="416.0" mnemonicParsing="false" onAction="#hapusklik" prefHeight="37.0" prefWidth="106.0">
+         <graphic>
+            <ImageView fitHeight="58.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../delete.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="exit" layoutX="475.0" layoutY="416.0" mnemonicParsing="false" onAction="#keluarklik" prefHeight="37.0" prefWidth="106.0" text="Keluar" />
+      <Button fx:id="first" layoutX="14.0" layoutY="365.0" mnemonicParsing="false" onAction="#awalklik" prefHeight="37.0" prefWidth="106.0" text="Awal" />
+      <Button fx:id="previous" layoutX="169.0" layoutY="363.0" mnemonicParsing="false" onAction="#sebelumklik" prefHeight="37.0" prefWidth="106.0" text="Sebelum" />
+      <Button fx:id="next" layoutX="329.0" layoutY="363.0" mnemonicParsing="false" onAction="#sesudahklik" prefHeight="37.0" prefWidth="106.0" text="Sesudah" />
+      <Button fx:id="last" layoutX="475.0" layoutY="363.0" mnemonicParsing="false" onAction="#akhirklik" prefHeight="37.0" prefWidth="106.0" text="Akhir" />
+      <Label layoutX="350.0" layoutY="14.0" text="Cari Data">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <TextField fx:id="search" layoutX="432.0" layoutY="14.0" onKeyReleased="#findbrg" />
+   </children>
+</AnchorPane>

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="344.0" prefWidth="389.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="project.penjualan.FXMLInputBrgController">
+   <children>
+      <Label layoutX="34.0" layoutY="32.0" text="Input Data Barang">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="59.0" layoutY="82.0" text="Kode Barang">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="59.0" layoutY="123.0" text="Nama Barang">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="61.0" layoutY="160.0" text="Tarif">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="64.0" layoutY="197.0" text="Gambar">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtkode" layoutX="179.0" layoutY="82.0" />
+      <TextField fx:id="txtnama" layoutX="179.0" layoutY="123.0" />
+      <TextField fx:id="txttarif" layoutX="179.0" layoutY="160.0" />
+      <TextField fx:id="txtgbr" layoutX="179.0" layoutY="197.0" />
+      <Label layoutX="171.0" layoutY="81.0" text=":">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="171.0" layoutY="123.0" text=":">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="171.0" layoutY="160.0" text=":">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="171.0" layoutY="197.0" text=":">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Button layoutX="70.0" layoutY="252.0" mnemonicParsing="false" onAction="#simpanklik" text="Simpan">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Button>
+      <Button layoutX="171.0" layoutY="252.0" mnemonicParsing="false" onAction="#cancelklik" text="Batal">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Button>
+      <Button fx:id="Exit" layoutX="261.0" layoutY="252.0" mnemonicParsing="false" onAction="#keluarklik" text="Keluar">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>
