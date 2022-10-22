@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="712.0" prefWidth="597.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.penjualan.FXMLDataPenjualanController">
+   <children>
+      <Label layoutX="14.0" layoutY="14.0" text="Data Penjualan">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <TableView fx:id="tbvjual" layoutX="14.0" layoutY="130.0" onMouseClicked="#setdata" prefHeight="193.0" prefWidth="567.0">
+        <columns>
+          <TableColumn prefWidth="75.0" text="C1" />
+          <TableColumn prefWidth="75.0" text="C2" />
+        </columns>
+      </TableView>
+      <Button fx:id="add" layoutX="14.0" layoutY="373.0" mnemonicParsing="false" onAction="#tambahklik" prefHeight="32.0" prefWidth="80.0">
+         <graphic>
+            <ImageView fitHeight="22.0" fitWidth="85.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../add.jpg" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="edit" layoutX="169.0" layoutY="373.0" mnemonicParsing="false" onAction="#ubahklik" prefHeight="32.0" prefWidth="80.0">
+         <graphic>
+            <ImageView fitHeight="29.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../edit.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="delete" layoutX="329.0" layoutY="373.0" mnemonicParsing="false" onAction="#hapusklik" prefHeight="32.0" prefWidth="80.0">
+         <graphic>
+            <ImageView fitHeight="58.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../delete.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="exit" layoutX="475.0" layoutY="373.0" mnemonicParsing="false" onAction="#keluarklik" prefHeight="32.0" prefWidth="80.0" text="Keluar" />
+      <Button fx:id="first" layoutX="14.0" layoutY="332.0" mnemonicParsing="false" onAction="#awalklik" prefHeight="32.0" prefWidth="80.0" text="Awal" />
+      <Button fx:id="previous" layoutX="169.0" layoutY="330.0" mnemonicParsing="false" onAction="#sebelumklik" prefHeight="32.0" prefWidth="80.0" text="Sebelum" />
+      <Button fx:id="next" layoutX="329.0" layoutY="330.0" mnemonicParsing="false" onAction="#sesudahklik" prefHeight="32.0" prefWidth="80.0" text="Sesudah" />
+      <Button fx:id="last" layoutX="475.0" layoutY="330.0" mnemonicParsing="false" onAction="#akhirklik" prefHeight="32.0" prefWidth="80.0" text="Akhir" />
+      <Label layoutX="348.0" layoutY="14.0" text="Cari Data">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <TextField fx:id="search" layoutX="429.0" layoutY="14.0" onKeyReleased="#findbrg" />
+      <TextField fx:id="txtid" layoutX="128.0" layoutY="99.0" />
+      <TextField fx:id="txtnojual" layoutX="128.0" layoutY="39.0" />
+      <Label layoutX="16.0" layoutY="99.0" text="Id Member">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="14.0" layoutY="71.0" text="Tanggal">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="16.0" layoutY="39.0" text="No Jual">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="18.0" layoutY="415.0" text="Detil Penjualan">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <TableView fx:id="tbvdjual" layoutX="18.0" layoutY="440.0" prefHeight="193.0" prefWidth="567.0">
+         <columns>
+            <TableColumn prefWidth="75.0" text="C1" />
+            <TableColumn prefWidth="75.0" text="C2" />
+         </columns>
+      </TableView>
+      <DatePicker fx:id="tanggal" layoutX="128.0" layoutY="68.0" prefHeight="25.0" prefWidth="149.0" />
+      <Label layoutX="255.0" layoutY="643.0" text="Total Pembayaran :">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="Total" layoutX="417.0" layoutY="644.0" prefHeight="25.0" prefWidth="167.0" />
+   </children>
+</AnchorPane>

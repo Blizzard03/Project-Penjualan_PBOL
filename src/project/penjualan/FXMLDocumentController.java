@@ -29,6 +29,8 @@ public class FXMLDocumentController implements Initializable {
 
     public static DBCust dtcust = new DBCust();
     public static DBBrg dtbrg = new DBBrg();
+    public static DBJual dtjual = new DBJual();
+    public static DBDetilJual dtjualdetil = new DBDetilJual();
     
     @FXML
     private MenuItem inputcust;
@@ -36,6 +38,8 @@ public class FXMLDocumentController implements Initializable {
     private MenuItem inputbrg;
     @FXML
     private MenuItem displaybrg;
+    @FXML
+    private MenuItem displayjual;
     
     /**
      * Initializes the controller class.
@@ -95,6 +99,21 @@ public class FXMLDocumentController implements Initializable {
     private void displaybrgklik(ActionEvent event) {
         try{  
             FXMLLoader loader=new FXMLLoader(getClass().getResource("FXMLDataBarang.fxml"));    
+            Parent root = (Parent)loader.load();
+            Scene scene = new Scene(root);
+            Stage stg=new Stage();
+            stg.initModality(Modality.APPLICATION_MODAL);
+            stg.setResizable(false);
+            stg.setIconified(false);
+            stg.setScene(scene);
+            stg.show();        
+        } catch (IOException e){   e.printStackTrace();   }
+    }
+
+    @FXML
+    private void displayjualklik(ActionEvent event) {
+        try{  
+            FXMLLoader loader=new FXMLLoader(getClass().getResource("FXMLDataPenjualan.fxml"));    
             Parent root = (Parent)loader.load();
             Scene scene = new Scene(root);
             Stage stg=new Stage();

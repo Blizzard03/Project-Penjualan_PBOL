@@ -35,7 +35,6 @@ public class FXMLDataBarangController implements Initializable {
 
     @FXML
     private Button edit;
-    @FXML
     private TableView<BrgModel> tbvbrg;
     @FXML
     private Button add;

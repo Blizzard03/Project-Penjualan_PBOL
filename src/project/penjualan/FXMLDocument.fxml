@@ -21,6 +21,7 @@
             <items>
               <MenuItem fx:id="displaycust" mnemonicParsing="false" onAction="#displaycustklik" text="Pelanggan" />
                   <MenuItem fx:id="displaybrg" mnemonicParsing="false" onAction="#displaybrgklik" text="Barang" />
+                  <MenuItem fx:id="displayjual" mnemonicParsing="false" onAction="#displayjualklik" text="Penjualan" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Transaksi">
