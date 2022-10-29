@@ -2,27 +2,29 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package project.penjualan;
+package project.penjualan.DataBase.DataBaseJualDetail;
 
+import project.penjualan.DataBase.Connector.Koneksi;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import project.penjualan.Detil_Jual_Models;
 
 /**
  *
  * @author LIKMI
  */
 public class DBDetilJual {
-    private DetilJualModel dt=new DetilJualModel();    
-    public DetilJualModel getDetilJualModel(){ return(dt);}
-    public void setDetilJualModel(DetilJualModel s){ dt=s;}
+    private Detil_Jual_Models dt=new Detil_Jual_Models();    
+    public Detil_Jual_Models getDetilJualModel(){ return(dt);}
+    public void setDetilJualModel(Detil_Jual_Models s){ dt=s;}
     public double Total=0;
     
-    public ObservableList<DetilJualModel>  Load(String kode) {
+    public ObservableList<Detil_Jual_Models>  Load(String kode) {
         try {
             Total=0;
-            ObservableList<DetilJualModel> tableData=FXCollections.observableArrayList();
+            ObservableList<Detil_Jual_Models> tableData=FXCollections.observableArrayList();
             Koneksi con = new Koneksi();            
             con.bukaKoneksi();
             con.statement = con.dbKoneksi.createStatement();
@@ -30,7 +32,7 @@ public class DBDetilJual {
                     "from detil_jual j join barang b on(j.kodebrg=b.kodebrg) WHERE j.nojual LIKE '" + kode + "%'");
 int i = 1;
             while (rs.next()) {
-                DetilJualModel d=new DetilJualModel();
+                Detil_Jual_Models d=new Detil_Jual_Models();
                 d.setNojual(rs.getString("nojual"));                
                 d.setKodebrg(rs.getString("kodebrg"));
                 d.setNamabrg(rs.getString("namabrg"));
@@ -147,10 +149,10 @@ int i = 1;
         }    
         }
     
-    public ObservableList<DetilJualModel>  CariDetil(String kode) {
+    public ObservableList<Detil_Jual_Models>  CariDetil(String kode) {
         try {    
             Total=0;
-            ObservableList<DetilJualModel> 	tableData;
+            ObservableList<Detil_Jual_Models> 	tableData;
             tableData = FXCollections.observableArrayList();
             Koneksi con = new Koneksi(); 
             con.bukaKoneksi();
@@ -159,7 +161,7 @@ int i = 1;
                     "from detil_jual j join barang b on(j.kodebrg=b.kodebrg) WHERE nojual LIKE '" + kode + "'");
         int i = 1;
         while(rs.next()){
-            DetilJualModel d=new DetilJualModel();
+            Detil_Jual_Models d=new Detil_Jual_Models();
                 d.setNojual(rs.getString("nojual"));                
                 d.setKodebrg(rs.getString("kodebrg"));
                 d.setKodebrg(rs.getString("namabrg"));

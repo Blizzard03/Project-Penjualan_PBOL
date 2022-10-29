@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
  */
-package project.penjualan;
+package Controller.MainMenu;
 
 import java.io.IOException;
 import java.net.URL;
@@ -16,18 +16,22 @@ import javafx.scene.Scene;
 import javafx.scene.control.MenuItem;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import project.penjualan.DBBrg;
+import project.penjualan.DataBaseCustumers;
+import project.penjualan.DataBase.DataBaseJualDetail.DBDetilJual;
+import project.penjualan.DBJual;
 
 /**
  * FXML Controller class
  *
  * @author LIKMI
  */
-public class FXMLDocumentController implements Initializable {
+public class FXML_MainMenuController implements Initializable {
 
     @FXML
     private MenuItem displaycust;
 
-    public static DBCust dtcust = new DBCust();
+    public static DataBaseCustumers dtcust = new DataBaseCustumers();
     public static DBBrg dtbrg = new DBBrg();
     public static DBJual dtjual = new DBJual();
     public static DBDetilJual dtjualdetil = new DBDetilJual();
@@ -40,6 +44,8 @@ public class FXMLDocumentController implements Initializable {
     private MenuItem displaybrg;
     @FXML
     private MenuItem displayjual;
+    @FXML
+    private MenuItem FormTransaksi;
     
     /**
      * Initializes the controller class.
@@ -123,6 +129,22 @@ public class FXMLDocumentController implements Initializable {
             stg.setScene(scene);
             stg.show();        
         } catch (IOException e){   e.printStackTrace();   }
+    }
+
+    @FXML
+    private void FormTransaksiClick(ActionEvent event) {
+         try{  
+            FXMLLoader loader=new FXMLLoader(getClass().getResource("FXMLTransaksi.fxml"));    
+            Parent root = (Parent)loader.load();
+            Scene scene = new Scene(root);
+            Stage stg=new Stage();
+            stg.initModality(Modality.APPLICATION_MODAL);
+            stg.setResizable(false);
+            stg.setIconified(false);
+            stg.setScene(scene);
+            stg.show();        
+        } catch (IOException e){   e.printStackTrace();   }
+        
     }
     
     

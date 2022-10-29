@@ -2,8 +2,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
  */
-package project.penjualan;
+package Controller.DataViews.Barang;
 
+import Controller.Input_Update.Barang.FXMLInputBrgController;
+import project.penjualan.Models.Barang.Barang_Models;
+import project.penjualan.Controller.MainMenu.FXMLDocumentController;
+import project.penjualan.Models.Costumers.Custumers_Models;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -35,7 +39,7 @@ public class FXMLDataBarangController implements Initializable {
 
     @FXML
     private Button edit;
-    private TableView<BrgModel> tbvbrg;
+    private TableView<Barang_Models> tbvbrg;
     @FXML
     private Button add;
     @FXML
@@ -82,7 +86,7 @@ public class FXMLDataBarangController implements Initializable {
 
     @FXML
     private void ubahklik(ActionEvent event) {
-        BrgModel s= new BrgModel();
+        Barang_Models s= new Barang_Models();
         s=tbvbrg.getSelectionModel().getSelectedItem();
         try{
         FXMLLoader loader=new FXMLLoader(getClass().getResource("FXMLInputBrg.fxml"));    
@@ -103,7 +107,7 @@ public class FXMLDataBarangController implements Initializable {
 
     @FXML
     private void hapusklik(ActionEvent event) {
-        BrgModel s= new BrgModel();       
+        Barang_Models s= new Barang_Models();       
         s=tbvbrg.getSelectionModel().getSelectedItem();
         Alert a=new Alert(Alert.AlertType.CONFIRMATION,"Mau dihapus?",ButtonType.YES,ButtonType.NO);
         a.showAndWait();
@@ -151,10 +155,10 @@ public class FXMLDataBarangController implements Initializable {
 
     @FXML
     private void findbrg(KeyEvent event) {
-        BrgModel s = new BrgModel();
+        Barang_Models s = new Barang_Models();
         String key = search.getText();
         if(key!=""){
-        ObservableList<BrgModel> data=FXMLDocumentController.dtbrg.CariBrg(key,key);
+        ObservableList<Barang_Models> data=FXMLDocumentController.dtbrg.CariBrg(key,key);
         if(data!=null){            
             show(data);
         }else {
@@ -168,7 +172,7 @@ public class FXMLDataBarangController implements Initializable {
     }
     
     public void showdata(){
-        ObservableList<BrgModel> data=FXMLDocumentController.dtbrg.Load();
+        ObservableList<Barang_Models> data=FXMLDocumentController.dtbrg.Load();
         if(data!=null){            
             show(data);
     }else {Alert a=new Alert(Alert.AlertType.ERROR,"Data kosong",ButtonType.OK);
@@ -179,20 +183,20 @@ public class FXMLDataBarangController implements Initializable {
 
 
     
-    public void show(ObservableList<BrgModel> data){
+    public void show(ObservableList<Barang_Models> data){
             tbvbrg.getColumns().clear();            
             tbvbrg.getItems().clear();
             TableColumn col = new TableColumn("KodeBarang");
-            col.setCellValueFactory(new PropertyValueFactory<CustModel, String>("kodebrg"));
+            col.setCellValueFactory(new PropertyValueFactory<Custumers_Models, String>("kodebrg"));
             tbvbrg.getColumns().addAll(col);
             col=new TableColumn("NamaBarang");
-            col.setCellValueFactory(new PropertyValueFactory<CustModel, String>("namabrg"));
+            col.setCellValueFactory(new PropertyValueFactory<Custumers_Models, String>("namabrg"));
             tbvbrg.getColumns().addAll(col);
             col=new TableColumn("Tarif");
-            col.setCellValueFactory(new PropertyValueFactory<CustModel, String>("tarif"));
+            col.setCellValueFactory(new PropertyValueFactory<Custumers_Models, String>("tarif"));
             tbvbrg.getColumns().addAll(col);
             col=new TableColumn("Gambar");
-            col.setCellValueFactory(new PropertyValueFactory<CustModel, String>("gambar"));
+            col.setCellValueFactory(new PropertyValueFactory<Custumers_Models, String>("gambar"));
             tbvbrg.getColumns().addAll(col);
             tbvbrg.setItems(data);
     }

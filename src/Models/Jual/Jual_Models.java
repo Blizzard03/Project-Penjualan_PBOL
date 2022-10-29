@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package project.penjualan;
+package Models.Jual;
 
 import java.sql.Date;
 
@@ -10,7 +10,7 @@ import java.sql.Date;
  *
  * @author LIKMI
  */
-public class JualModel {
+public class Jual_Models {
     private String nojual, idmember, nama;
     private Date tanggal;
 

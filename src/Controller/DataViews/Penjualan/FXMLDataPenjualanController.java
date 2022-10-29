@@ -2,8 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
  */
-package project.penjualan;
+package Controller.DataViews.Penjualan;
 
+import project.penjualan.Controller.MainMenu.FXMLDocumentController;
+import project.penjualan.Models.Jual.Jual_Models;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
@@ -39,7 +41,7 @@ public class FXMLDataPenjualanController implements Initializable {
     
 
     @FXML
-    private TableView<JualModel> tbvjual;
+    private TableView<Jual_Models> tbvjual;
     @FXML
     private Button add;
     @FXML
@@ -98,7 +100,7 @@ public class FXMLDataPenjualanController implements Initializable {
 
     @FXML
     private void ubahklik(ActionEvent event) {
-        JualModel s = new JualModel();
+        Jual_Models s = new Jual_Models();
         s=tbvjual.getSelectionModel().getSelectedItem();
         try{
         FXMLLoader loader=new FXMLLoader(getClass().getResource("FXMLInputBrg.fxml"));    
@@ -119,7 +121,7 @@ public class FXMLDataPenjualanController implements Initializable {
 
     @FXML
     private void hapusklik(ActionEvent event) {
-        JualModel s= new JualModel();       
+        Jual_Models s= new Jual_Models();       
         s=tbvjual.getSelectionModel().getSelectedItem();
         Alert a=new Alert(Alert.AlertType.CONFIRMATION,"Mau dihapus?",ButtonType.YES,ButtonType.NO);
         a.showAndWait();
@@ -171,10 +173,10 @@ public class FXMLDataPenjualanController implements Initializable {
 
     @FXML
     private void findbrg(KeyEvent event) {
-        JualModel s = new JualModel();
+        Jual_Models s = new Jual_Models();
         String key = search.getText();
         if(key!=""){
-        ObservableList<JualModel> data=FXMLDocumentController.dtjual.CariJual(key);
+        ObservableList<Jual_Models> data=FXMLDocumentController.dtjual.CariJual(key);
         
         if(data!=null){        
             show(data);
@@ -199,7 +201,7 @@ public class FXMLDataPenjualanController implements Initializable {
     }
     
     public void showdata(){
-        ObservableList<JualModel> data=FXMLDocumentController.dtjual.Load();
+        ObservableList<Jual_Models> data=FXMLDocumentController.dtjual.Load();
         if(data!=null){            
             show(data);
     }else {Alert a=new Alert(Alert.AlertType.ERROR,"Data kosong",ButtonType.OK);
@@ -208,22 +210,23 @@ public class FXMLDataPenjualanController implements Initializable {
         }             
     }
     
-    public void show(ObservableList<JualModel> data){
+    public void show(ObservableList<Jual_Models> data){
             tbvjual.getColumns().clear();            
             tbvjual.getItems().clear();
             TableColumn col = new TableColumn("No Jual");
-            col.setCellValueFactory(new PropertyValueFactory<JualModel, String>("nojual"));
+            col.setCellValueFactory(new PropertyValueFactory<Jual_Models, String>("nojual"));
             tbvjual.getColumns().addAll(col);
             col=new TableColumn("Tanggal");
-            col.setCellValueFactory(new PropertyValueFactory<JualModel, Date>("tanggal"));
+            col.setCellValueFactory(new PropertyValueFactory<Jual_Models, Date>("tanggal"));
             tbvjual.getColumns().addAll(col);
             col=new TableColumn("Id Member");
-            col.setCellValueFactory(new PropertyValueFactory<JualModel, String>("idmember"));
+            col.setCellValueFactory(new PropertyValueFactory<Jual_Models, String>("idmember"));
             tbvjual.getColumns().addAll(col);
             col=new TableColumn("Nama");
-            col.setCellValueFactory(new PropertyValueFactory<JualModel, String>("nama"));
+            col.setCellValueFactory(new PropertyValueFactory<Jual_Models, String>("nama"));
             tbvjual.getColumns().addAll(col);
             tbvjual.setItems(data);
+            
     }
     
     public void showdatadetil(String text){
@@ -258,7 +261,13 @@ public class FXMLDataPenjualanController implements Initializable {
             col.setCellValueFactory(new PropertyValueFactory<DetilJualModel, Float>("total"));
             tbvdjual.getColumns().addAll(col);
             tbvdjual.setItems(data);
-            Total.setText(String.valueOf(FXMLDocumentController.dtjualdetil.Total));
+            double totalall=0;
+            for(int i=0; i<tbvdjual.getItems().size();i++){
+               DetilJualModel n=tbvdjual.getItems().get(i);
+               totalall+=n.getTotal();
+            }
+            Total.setText("Rp" + String.valueOf(totalall));
+            //Total.setText(String.valueOf(FXMLDocumentController.dtjualdetil.Total));
     }
     
 }

@@ -7,9 +7,9 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="595.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.penjualan.FXMLDocumentController">
+<AnchorPane id="AnchorPane" prefHeight="595.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.penjualan.Controller.MainMenu.FXMLDocumentController">
    <children>
-      <MenuBar prefHeight="25.0" prefWidth="750.0">
+      <MenuBar prefHeight="25.0" prefWidth="750.0" style="-fx-cursor: hand;">
         <menus>
             <Menu mnemonicParsing="false" text="Input">
               <items>
@@ -26,7 +26,7 @@
           </Menu>
           <Menu mnemonicParsing="false" text="Transaksi">
             <items>
-              <MenuItem mnemonicParsing="false" text="Delete" />
+              <MenuItem fx:id="FormTransaksi" mnemonicParsing="false" onAction="#FormTransaksiClick" text="Penjualan" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Help">

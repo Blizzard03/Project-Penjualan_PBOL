@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="527.0" prefWidth="729.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="project.penjualan.Controller.Transaksi.FXMLTransaksiController">
+   <children>
+      <Label layoutX="14.0" layoutY="14.0" text="Transaksi Penjualan">
+         <font>
+            <Font name="Baskerville Old Face" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="14.0" layoutY="54.0" text="No Jual" />
+      <Label layoutX="367.0" layoutY="54.0" text="Tanggal" />
+      <Label layoutX="367.0" layoutY="94.0" text="Pilih Barang" />
+      <TableView fx:id="TableViewCustumers" layoutX="14.0" layoutY="124.0" onMouseClicked="#SetIDmember" prefHeight="86.0" prefWidth="321.0">
+        <columns>
+          <TableColumn prefWidth="75.0" text="C1" />
+          <TableColumn prefWidth="75.0" text="C2" />
+        </columns>
+      </TableView>
+      <Label layoutX="20.0" layoutY="218.0" text="ID member" />
+      <TableView fx:id="TabelViewsBarang" layoutX="367.0" layoutY="124.0" onMouseClicked="#SetIDataBarang" prefHeight="86.0" prefWidth="321.0">
+         <columns>
+            <TableColumn prefWidth="75.0" text="C1" />
+            <TableColumn prefWidth="75.0" text="C2" />
+         </columns>
+      </TableView>
+      <Label layoutX="369.0" layoutY="218.0" text="Kode Barang" />
+      <Label layoutX="370.0" layoutY="248.0" text="Jumlah" />
+      <Label layoutX="20.0" layoutY="269.0" text="Detail Pembelian" />
+      <TableView fx:id="TabelViewsDetailPembelian" layoutX="20.0" layoutY="286.0" prefHeight="161.0" prefWidth="673.0">
+         <columns>
+            <TableColumn prefWidth="75.0" text="C1" />
+            <TableColumn prefWidth="75.0" text="C2" />
+         </columns>
+      </TableView>
+      <Label layoutX="17.0" layoutY="91.0" text="Pilih Member" />
+      <DatePicker fx:id="datepickerTanggal" layoutX="441.0" layoutY="50.0" promptText="Input Tanggal" style="-fx-cursor: hand;" />
+      <TextField fx:id="txtNoJual" layoutX="100.0" layoutY="50.0" promptText="Input No Jual" style="-fx-cursor: text;" />
+      <TextField fx:id="JumlahTxt" layoutX="441.0" layoutY="244.0" style="-fx-cursor: text;" />
+      <TextField fx:id="IdMemberText" layoutX="100.0" layoutY="214.0" />
+      <TextField fx:id="KodeBarangText" layoutX="441.0" layoutY="214.0" style="-fx-cursor: text;" />
+      <Button fx:id="ButtonTambahBarang" layoutX="596.0" layoutY="214.0" mnemonicParsing="false" onAction="#ButtonTambahBarangClick" style="-fx-cursor: hand;" text="+" />
+      <Button fx:id="ButtonHapusBarang" layoutX="596.0" layoutY="244.0" mnemonicParsing="false" onAction="#ButtonHapusBarangClick" prefHeight="25.0" prefWidth="25.0" style="-fx-cursor: hand;" text="-" />
+      <Button fx:id="ButtonBatal" layoutX="575.0" layoutY="467.0" mnemonicParsing="false" onAction="#ButtonBatalClick" style="-fx-cursor: hand;" text="Batal" />
+      <Button fx:id="ButtonSave" layoutX="637.0" layoutY="467.0" mnemonicParsing="false" onAction="#ButtonSaveClick" style="-fx-cursor: hand;" text="Simpan" />
+   </children>
+</AnchorPane>

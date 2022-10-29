@@ -4,20 +4,21 @@
  */
 package project.penjualan;
 
+import project.penjualan.DataBase.Connector.Koneksi;
+import project.penjualan.Models.Barang.Barang_Models;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.HashMap;
-import java.util.Map;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+
 /**
  *
  * @author LIKMI
  */
-public class DBJual {
-    private JualModel dt=new JualModel();    
-    public JualModel getJualModel(){ return(dt);}
-    public void setJualModel(JualModel s){ dt=s;}
+public class DBBrg {
+    private Barang_Models dt=new Barang_Models();    
+    public Barang_Models getBrgModel(){ return(dt);}
+    public void setBrgModel(Barang_Models s){ dt=s;}
     
     
     
@@ -27,7 +28,7 @@ public class DBJual {
             Koneksi con = new Koneksi();            
             con.bukaKoneksi();
             con.statement = con.dbKoneksi.createStatement();
-            ResultSet rs = con.statement.executeQuery(  "select count(*) as jml from jual where nojual = '" + nomor + "'");
+            ResultSet rs = con.statement.executeQuery(  "select count(*) as jml from barang where kodebrg = '" + nomor + "'");
             while (rs.next()) {                
                 val = rs.getInt("jml");            
             }            
@@ -43,7 +44,7 @@ public class DBJual {
         Koneksi con = new Koneksi();
         try {            
             con.bukaKoneksi();;
-            con.preparedStatement = con.dbKoneksi.prepareStatement("delete from jual where nojual  = ? ");
+            con.preparedStatement = con.dbKoneksi.prepareStatement("delete from barang where kodebrg  = ? ");
             con.preparedStatement.setString(1, nomor);
             con.preparedStatement.executeUpdate();            
             berhasil = true;
@@ -61,12 +62,11 @@ public class DBJual {
         Koneksi con = new Koneksi();
         try {       
             con.bukaKoneksi();
-            con.preparedStatement = con.dbKoneksi.prepareStatement("update jual tanggal = ?, idmember = ?  where  nojual = ?");
-              
-            con.preparedStatement.setDate(1, getJualModel().getTanggal());
-            con.preparedStatement.setString(2, getJualModel().getIdmember());
-            con.preparedStatement.setString(3, getJualModel().getNojual());  
-            
+            con.preparedStatement = con.dbKoneksi.prepareStatement("update barang set namabrg = ?, tarif = ?, gambar = ?  where  kodebrg = ?");
+            con.preparedStatement.setString(1, getBrgModel().getNamabrg());           
+            con.preparedStatement.setDouble(2, getBrgModel().getTarif()); 
+            con.preparedStatement.setString(3, getBrgModel().getGambar());
+            con.preparedStatement.setString(4, getBrgModel().getKodebrg());
             con.preparedStatement.executeUpdate();
             berhasil = true;
         } catch (Exception e) {            
@@ -83,10 +83,11 @@ public class DBJual {
         Koneksi con = new Koneksi();
         try {       
             con.bukaKoneksi();
-            con.preparedStatement = con.dbKoneksi.prepareStatement("insert into jual (nojual,tanggal,idmember) values (?,?,?)");
-            con.preparedStatement.setString(1, getJualModel().getNojual());
-            con.preparedStatement.setDate(2, getJualModel().getTanggal());           
-            con.preparedStatement.setString(3, getJualModel().getIdmember());       
+            con.preparedStatement = con.dbKoneksi.prepareStatement("insert into barang (kodebrg,namabrg,tarif,gambar) values (?,?,?,?)");
+            con.preparedStatement.setString(1, getBrgModel().getKodebrg());
+            con.preparedStatement.setString(2, getBrgModel().getNamabrg());           
+            con.preparedStatement.setDouble(3, getBrgModel().getTarif()); 
+            con.preparedStatement.setString(4, getBrgModel().getGambar());           
             con.preparedStatement.executeUpdate();
             berhasil = true;
         } catch (Exception e) {            
@@ -99,30 +100,28 @@ public class DBJual {
      }
     
     
-    public ObservableList<JualModel>  CariJual(String kode) {
-        return Show("select j.nojual, tanggal, c.idmember, c.nama from jual j "
-                +   "join customer c on(c.idmember = j.idmember) WHERE nojual LIKE '" + kode + "%'");
+    public ObservableList<Barang_Models>  CariBrg(String kode, String nama) {
+        return Show("select * from barang WHERE kodebrg LIKE '" + kode + "%' OR namabrg LIKE '" + nama + "%'");
     }
 
-    public ObservableList<JualModel>  Load() {
-        return Show("Select j.nojual, tanggal, c.idmember, c.nama from jual j "
-                +   "join customer c on(c.idmember = j.idmember)");
+    public ObservableList<Barang_Models>  Load() {
+        return Show("Select * from barang");
     }
     
-    public ObservableList<JualModel> Show(String a){
+    public ObservableList<Barang_Models> Show(String a){
         try {
-            ObservableList<JualModel> tableData=FXCollections.observableArrayList();
+            ObservableList<Barang_Models> tableData=FXCollections.observableArrayList();
             Koneksi con = new Koneksi();            
             con.bukaKoneksi();
             con.statement = con.dbKoneksi.createStatement();
             ResultSet rs = con.statement.executeQuery(a);
             int i = 1;
             while (rs.next()) {
-                JualModel d=new JualModel();
-                d.setNojual(rs.getString("nojual"));                
-                d.setIdmember(rs.getString("idmember"));
-                d.setTanggal(rs.getDate("tanggal"));
-                d.setNama(rs.getString("nama"));
+                Barang_Models d=new Barang_Models();
+                d.setKodebrg(rs.getString("kodebrg"));                
+                d.setNamabrg(rs.getString("namabrg"));
+                d.setTarif(rs.getDouble("tarif"));
+                d.setGambar(rs.getString("gambar"));
                 tableData.add(d);                
                 i++;            
             }
@@ -135,20 +134,5 @@ public class DBJual {
     
     }
     
-    public void CetakReportJual(){
-        Koneksi con = new Koneksi();        
-        String is = "D:\\Kezia\\PBOL\\Penjualan_Kezia\\src\\penjualan_kezia\\reportJual.jrxml";   
-        Map map = new HashMap(); 
-        map.put("judul", "Laporan Data Barang");
-        con.bukaKoneksi();        
-        try{
-           //JasperReport jasperReport = JasperCompileManager.compileReport(is);
-           //JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport,map,con.dbKoneksi);
-           //JasperViewer.viewReport(jasperPrint,false);
-        }
-        catch(Exception ex){
-            ex.printStackTrace();
-        }        con.tutupKoneksi();    }
     
 }
-
